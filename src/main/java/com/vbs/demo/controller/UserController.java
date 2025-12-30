@@ -159,9 +159,5 @@ public class UserController {
         return "User Deleted Successfully";
     }
 
-    @GetMapping("/histories")
-    public List<History> histo(@PathVariable int id)
-    {
-        return historyRepo.findAll();
-    }
+
 }
