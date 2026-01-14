@@ -25,4 +25,6 @@ public class User {
     String role;
     @Column(nullable = false)
     double balance;
+    @Column(nullable = false)
+    private boolean blocked = false;
 }

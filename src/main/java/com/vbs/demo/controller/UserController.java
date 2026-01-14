@@ -11,6 +11,7 @@ import com.vbs.demo.repositories.TransactionRepo;
 import com.vbs.demo.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -159,5 +160,25 @@ public class UserController {
         return "User Deleted Successfully";
     }
 
+    @PutMapping("/block/{id}")
+    public ResponseEntity<?> blockUser(@PathVariable int id) {
+        User user = userRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
+        user.setBlocked(true);
+        userRepo.save(user);
+
+        return ResponseEntity.ok("User blocked successfully");
+    }
+
+    @PutMapping("/unblock/{id}")
+    public ResponseEntity<?> unblockUser(@PathVariable int id) {
+        User user = userRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        user.setBlocked(false);
+        userRepo.save(user);
+
+        return ResponseEntity.ok("User unblocked successfully");
+    }
 }

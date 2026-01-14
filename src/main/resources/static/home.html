@@ -14,15 +14,17 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
 
         .container {
             width: 90%;
-            max-width: 450px;
+            max-width: 600px;
+            height: 90vh;
             background: white;
             border-radius: 16px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -47,37 +49,40 @@
         }
 
         .content {
-            padding: 40px 30px;
+            padding: 20px;
         }
 
         .home-content {
             text-align: center;
+            display: grid;
         }
 
         .home-content h2 {
             color: #333;
-            margin-bottom: 20px;
-            font-size: 24px;
+            margin-bottom: 10px;
+            font-size: 20px;
         }
 
         .home-content p {
             color: #666;
             line-height: 1.6;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
+            font-size: 13px;
         }
 
         .btn-group {
             display: flex;
             gap: 15px;
-            margin-top: 30px;
+            margin-top: 10px;
+            margin-bottom: 40px;
         }
 
         .btn {
             flex: 1;
-            padding: 14px;
+            padding: 12px;
             border: none;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
             transition: all 0.3s;
             font-weight: 600;
@@ -104,54 +109,95 @@
 
         .features {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 30px 0;
+            grid-template-columns: repeat(3,1fr);
+            gap: 10px;
+            margin: 15px 0;
         }
 
         .feature {
-            padding: 20px;
+            padding: 12px;
             background: #f8f9fa;
             border-radius: 8px;
             text-align: center;
         }
 
         .feature-icon {
-            font-size: 32px;
+            font-size: 26px;
             margin-bottom: 10px;
         }
 
         .feature h3 {
-            font-size: 14px;
+            font-size: 13px;
             color: #333;
             margin-bottom: 5px;
         }
 
         .feature p {
-            font-size: 12px;
+            font-size: 11px;
             color: #666;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>VBS</h1>
-            <p>Virtual Banking System</p>
-        </div>
+<div class="container">
+    <div class="header">
+        <h1>VBS</h1>
+        <p>Virtual Banking System</p>
+    </div>
 
-        <div class="content">
-            <div class="home-content">
-                <h2>Welcome to VBS</h2>
-                <p>Experience secure and convenient banking at your fingertips. Manage your finances with confidence.</p>
-                
-                
-                <div class="btn-group">
-                    <button class="btn btn-primary" onclick="window.location.href='login.html'">Login</button>
-                    <button class="btn btn-secondary" onclick="window.location.href='signup.html'">Sign Up</button>
+    <div class="content">
+        <div class="home-content">
+            <h2>Welcome to VBS</h2>
+            <p>
+                VBS (Virtual Banking System) is a secure and user-friendly platform that allows users and administrators
+                to manage banking operations digitally with ease and confidence.
+            </p>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">💰</div>
+                    <h3>Deposit Money</h3>
+                    <p>Users can safely deposit money into their accounts and view updated balances instantly.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">💸</div>
+                    <h3>Withdraw Money</h3>
+                    <p>Withdraw funds securely while ensuring balance validation and transaction safety.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🔁</div>
+                    <h3>Transfer Funds</h3>
+                    <p>Transfer money between VBS accounts quickly with real-time transaction updates.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">📘</div>
+                    <h3>Passbook</h3>
+                    <p>View complete transaction history including deposits, withdrawals, and transfers.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">👤</div>
+                    <h3>User Account</h3>
+                    <p>Each user has a personalized account with balance tracking and secure access.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">👨‍💼</div>
+                    <h3>Admin Control</h3>
+                    <p>Admins can manage users, monitor transactions, and ensure system integrity.</p>
                 </div>
             </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="window.location.href='login.html'">Login</button>
+                <button class="btn btn-secondary" onclick="window.location.href='signup.html'">Sign Up</button>
+            </div>
+
         </div>
     </div>
+</div>
 </body>
 </html>

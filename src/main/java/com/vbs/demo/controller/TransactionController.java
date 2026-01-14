@@ -24,6 +24,9 @@ public class TransactionController {
     {
         User user = userRepo.findById(obj.getId()).orElseThrow(()->new RuntimeException("Not found"));
         double newBalance = user.getBalance() + obj.getAmount();
+        if (user.isBlocked()) {
+            return ("Your account is blocked. Contact admin.");
+        }
         user.setBalance(newBalance);
         userRepo.save(user);
 
@@ -41,6 +44,9 @@ public class TransactionController {
     {
         User user = userRepo.findById(obj.getId()).orElseThrow(()->new RuntimeException("Not found"));
         double newBalance = user.getBalance() - obj.getAmount();
+        if (user.isBlocked()) {
+            return ("Your account is blocked. Contact admin.");
+        }
         if(newBalance < 0)
         {
             return "Balance Insufficient";
@@ -68,6 +74,9 @@ public class TransactionController {
         if(obj.getAmount()<0) return "Invalid amount";
         double sbalance= sender.getBalance() - obj.getAmount();
         double rbalance = rec.getBalance() + obj.getAmount();
+        if (sender.isBlocked()) {
+            return ("Your account is blocked. Contact admin.");
+        }
         if(sbalance<0) return "Insufficient Balance";
 
         sender.setBalance(sbalance);
@@ -100,5 +109,10 @@ public class TransactionController {
     public List<Transaction> getPassbook(@PathVariable int id)
     {
         return transactionRepo.findAllByUserId(id);
+    }
+
+    @GetMapping("/transactions/user/{userId}")
+    public List<Transaction> getUserTransactions(@PathVariable int userId) {
+        return transactionRepo.findByUserIdOrderByIdDesc(userId);
     }
 }
